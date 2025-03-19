@@ -13,6 +13,32 @@
             object-fit: cover;
             border-bottom: 1px solid gray;
         }
+
+        /* 검색 자동완성 드롭다운 스타일 */
+        #search-suggestions {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: #fff;
+            border: 1px solid #ced4da;
+            border-top: none;
+            max-height: 200px;
+            overflow-y: auto;
+            display: none;
+        }
+
+        #search-suggestions a {
+            display: block;
+            padding: 0.5rem 1rem;
+            color: #212529;
+            text-decoration: none;
+        }
+
+        #search-suggestions a:hover {
+            background-color: #f8f9fa;
+        }
     </style>
     <title>유레카 1조</title>
     <!-- Favicon-->
@@ -30,106 +56,95 @@
             <a class="navbar-brand" href="#!">LG U+ 유레카 1조</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-                aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
                     <li class="nav-item"><a class="nav-link active" aria-current="page" href="index.html">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button"
                             data-bs-toggle="dropdown" aria-expanded="false">Members</a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" href="#!">이희용 [조장]</a></li>
-                            <li><a class="dropdown-item" href="#!">김시헌</a></li>
-                            <li><a class="dropdown-item" href="#!">김지산</a></li>
-                            <li><a class="dropdown-item" href="#!">신혜원</a></li>
-                            <li><a class="dropdown-item" href="#!">이재윤</a></li>
-                            <li><a class="dropdown-item" href="#!">임민서</a></li>
+                            <li><a class="dropdown-item" href="profile.html?id=이희용">이희용 [조장]</a></li>
+                            <li><a class="dropdown-item" href="profile.html?id=김시헌">김시헌</a></li>
+                            <li><a class="dropdown-item" href="profile.html?id=김지산">김지산</a></li>
+                            <li><a class="dropdown-item" href="profile.html?id=신혜원">신혜원</a></li>
+                            <li><a class="dropdown-item" href="profile.html?id=이재윤">이재윤</a></li>
+                            <li><a class="dropdown-item" href="profile.html?id=임민서">임민서</a></li>
                         </ul>
                     </li>
+                    <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
                 </ul>
-                <form class="d-flex" role="search">
-                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                <!-- 검색 form: position-relative로 드롭다운 위치 조절 -->
+                <form id="search-form" class="d-flex position-relative" role="search" autocomplete="off">
+                    <input id="search-input" class="form-control me-2" type="search" placeholder="멤버 검색"
+                        aria-label="Search">
+                    <div id="search-suggestions"></div>
                     <button class="btn btn-outline-success" type="submit">Search</button>
                 </form>
             </div>
         </div>
     </nav>
+
     <!-- Header-->
     <header class="bg-dark py-5">
         <div class="container px-4 px-lg-5 my-3">
             <div class="text-center text-white">
                 <h1 class="display-4 fw-bolder">1조 멤버들을 소개합니다!</h1>
-                <p class="lead fw-normal text-white-50 mb-0">유레카 "DB & 프론트엔드" 과목 1조</p>
+                <p class="lead fw-normal text-white-50 mb-0">유레카 "DB & 프론트엔드" 1조</p>
             </div>
         </div>
     </header>
+
     <!-- Section-->
     <section class="py-5">
         <div class="container px-4 px-lg-5 mt-1">
             <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
                 <div class="col mb-5">
                     <div class="card h-100">
-                        <!-- image-->
                         <img class="card-img-top" src="assets/heeyong.jpeg" alt="..." />
-                        <!-- details-->
                         <div class="card-body p-4">
                             <div class="text-center">
-                                <!-- name-->
                                 <h5 class="fw-bolder">이희용 [조장]</h5>
-                                <!-- description -->
                                 "노는게 제일 좋아"
                             </div>
                         </div>
-                        <!-- actions-->
                         <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                            <div class="text-center"><a class="btn btn-outline-dark mt-auto"
-                                    href="profile.html?id=이희용">자세히
-                                    알아보기</a>
+                            <div class="text-center">
+                                <a class="btn btn-outline-dark mt-auto" href="profile.html?id=이희용">자세히 알아보기</a>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="col mb-5">
                     <div class="card h-100">
-                        <!-- image-->
                         <img class="card-img-top" src="assets/siheon.jpeg" alt="..." />
-                        <!-- details-->
                         <div class="card-body p-4">
                             <div class="text-center">
-                                <!-- name-->
                                 <h5 class="fw-bolder">김시헌</h5>
-                                <!-- description -->
                                 "한잔 하실?"
                             </div>
                         </div>
-                        <!-- actions-->
                         <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                            <div class="text-center"><a class="btn btn-outline-dark mt-auto"
-                                    href="profile.html?id=김시헌">자세히
-                                    알아보기</a>
+                            <div class="text-center">
+                                <a class="btn btn-outline-dark mt-auto" href="profile.html?id=김시헌">자세히 알아보기</a>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="col mb-5">
                     <div class="card h-100">
-                        <!-- image-->
                         <img class="card-img-top" src="assets/jisan.png" alt="..." />
-                        <!-- details-->
                         <div class="card-body p-4">
                             <div class="text-center">
-                                <!-- name-->
                                 <h5 class="fw-bolder">김지산</h5>
-                                <!-- description -->
                                 "뜨거운 남자"
                             </div>
                         </div>
-                        <!-- actions-->
                         <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                            <div class="text-center"><a class="btn btn-outline-dark mt-auto"
-                                    href="profile.html?id=김지산">자세히
-                                    알아보기</a>
+                            <div class="text-center">
+                                <a class="btn btn-outline-dark mt-auto" href="profile.html?id=김지산">자세히 알아보기</a>
                             </div>
                         </div>
                     </div>
@@ -138,81 +153,66 @@
             <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
                 <div class="col mb-5">
                     <div class="card h-100">
-                        <!-- image-->
                         <img class="card-img-top" src="assets/hyewon.jpeg" alt="..." />
-                        <!-- details-->
                         <div class="card-body p-4">
                             <div class="text-center">
-                                <!-- name-->
                                 <h5 class="fw-bolder">신혜원</h5>
-                                <!-- description -->
                                 "말하는 감자 &#129364"
                             </div>
                         </div>
-                        <!-- actions-->
                         <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                            <div class="text-center"><a class="btn btn-outline-dark mt-auto"
-                                    href="profile.html?id=신혜원">자세히
-                                    알아보기</a>
+                            <div class="text-center">
+                                <a class="btn btn-outline-dark mt-auto" href="profile.html?id=신혜원">자세히 알아보기</a>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="col mb-5">
                     <div class="card h-100">
-                        <!-- image-->
                         <img class="card-img-top" src="assets/jaeyoon.png" alt="..." />
-                        <!-- details-->
                         <div class="card-body p-4">
                             <div class="text-center">
-                                <!-- name-->
                                 <h5 class="fw-bolder">이재윤</h5>
-                                <!-- description -->
                                 "즐기는 개발자"
                             </div>
                         </div>
-                        <!-- actions-->
                         <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                            <div class="text-center"><a class="btn btn-outline-dark mt-auto"
-                                    href="profile.html?id=이재윤">자세히
-                                    알아보기</a>
+                            <div class="text-center">
+                                <a class="btn btn-outline-dark mt-auto" href="profile.html?id=이재윤">자세히 알아보기</a>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="col mb-5">
                     <div class="card h-100">
-                        <!-- image-->
                         <img class="card-img-top" src="assets/minseo.webp" alt="..." />
-                        <!-- details-->
                         <div class="card-body p-4">
                             <div class="text-center">
-                                <!-- name-->
                                 <h5 class="fw-bolder">임민서</h5>
-                                <!-- description -->
                                 "내일 죽어도 리버풀"
                             </div>
                         </div>
-                        <!-- actions-->
                         <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                            <div class="text-center"><a class="btn btn-outline-dark mt-auto"
-                                    href="profile.html?id=임민서">자세히
-                                    알아보기</a>
+                            <div class="text-center">
+                                <a class="btn btn-outline-dark mt-auto" href="profile.html?id=임민서">자세히 알아보기</a>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+        </div>
     </section>
+
     <!-- Footer-->
     <footer class="py-5 bg-dark">
         <div class="container">
             <p class="m-0 text-center text-white">Copyright &copy; Your Website 2023</p>
         </div>
     </footer>
+
     <!-- Bootstrap core JS-->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
-    <!-- Core theme JS-->
+    <!-- 검색 기능 -->
     <script src="js/scripts.js"></script>
 </body>
 
