@@ -14,6 +14,43 @@
             object-fit: cover;
             border: 1px solid #ccc;
         }
+
+        /* 프로필 정보 항목 디자인 개선 */
+        #profile-info li {
+            background-color: #f8f9fa;
+            padding: 15px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            border: 1px solid #dee2e6;
+            display: flex;
+            align-items: center;
+        }
+
+        #profile-info li strong {
+            display: inline-block;
+            width: 130px;
+            font-weight: bold;
+            color: #495057;
+        }
+
+        /* 연락처 링크 꾸미기 */
+        .contact-link {
+            text-decoration: none;
+            color: #007bff;
+            font-size: 1.1rem;
+            margin-right: 10px;
+            display: inline-flex;
+            align-items: center;
+        }
+
+        .contact-link i {
+            margin-right: 5px;
+            font-size: 1.2rem;
+        }
+
+        .contact-link:hover {
+            color: #0056b3;
+        }
     </style>
     <title>프로필 상세보기</title>
     <!-- Favicon-->
@@ -124,7 +161,10 @@
                 favoriteFood: "삼겹살",
                 techStack: ["Java", "Spring", "Python"],
                 projects: ["한의학 EMR 전자차트, 한의학 웹매거진"],
-                contact: { github: "https://github.com/siheon0411" },
+                contact: {
+                    github: "https://github.com/siheon0411",
+                    instagram: "https://www.instagram.com/danielkim411/"
+                },
                 image: "assets/siheon.jpeg",
                 website: "https://siheon0411.github.io/introducing-siheon/"
             },
@@ -195,7 +235,7 @@
             // 프로필 이미지 업데이트
             document.getElementById('profile-img').src = profile.image;
 
-            // 추가 정보 업데이트
+            // 추가 정보 업데이트 (contact 링크에 아이콘 적용)
             const infoList = document.getElementById('profile-info');
             infoList.innerHTML = `
         <li><strong>생년월일:</strong> ${profile.birthdate}</li>
@@ -204,8 +244,8 @@
         <li><strong>기술스택:</strong> ${profile.techStack.join(', ')}</li>
         <li><strong>프로젝트:</strong> ${profile.projects.join(', ')}</li>
         <li><strong>Contact:</strong>
-            ${profile.contact.github ? `<a href="${profile.contact.github}" target="_blank">GitHub</a>` : ''}
-            ${profile.contact.instagram ? ` | <a href="${profile.contact.instagram}" target="_blank">Instagram</a>` : ''}
+          ${profile.contact.github ? `<a class="contact-link" href="${profile.contact.github}" target="_blank"><i class="bi bi-github"></i> Github</a>` : ''}
+          ${profile.contact.instagram ? `<a class="contact-link" href="${profile.contact.instagram}" target="_blank"><i class="bi bi-instagram"></i> Instagram</a>` : ''}
         </li>
       `;
         } else {
