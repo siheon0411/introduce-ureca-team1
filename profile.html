@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <style>
+        .profile-img {
+            width: 100%;
+            max-width: 250px;
+            height: auto;
+            object-fit: cover;
+            border: 1px solid #ccc;
+        }
+    </style>
+    <title>프로필 상세보기</title>
+    <!-- Favicon-->
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+    <!-- Bootstrap icons-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <link href="css/styles.css" rel="stylesheet" />
+</head>
+
+<body>
+    <!-- Navigation-->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container px-4 px-lg-5">
+            <a class="navbar-brand" href="#!">LG U+ 유레카 1조</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
+                    <li class="nav-item"><a class="nav-link active" aria-current="page" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">Members</a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="#!">이희용 [조장]</a></li>
+                            <li><a class="dropdown-item" href="#!">김시헌</a></li>
+                            <li><a class="dropdown-item" href="#!">김지산</a></li>
+                            <li><a class="dropdown-item" href="#!">신혜원</a></li>
+                            <li><a class="dropdown-item" href="#!">이재윤</a></li>
+                            <li><a class="dropdown-item" href="#!">임민서</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <form class="d-flex" role="search">
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-success" type="submit">Search</button>
+                </form>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header-->
+    <header class="bg-dark py-5">
+        <div class="container px-4 px-lg-5 my-3">
+            <!-- d-flex로 왼쪽에 이름/설명, 오른쪽에 홈페이지 아이콘 배치 -->
+            <div class="d-flex align-items-center justify-content-between">
+                <div>
+                    <h1 id="profile-header-name" class="display-4 fw-bolder text-white"></h1>
+                    <p id="profile-header-desc" class="lead fw-normal text-white-50 mb-0"></p>
+                </div>
+                <div>
+                    <!-- 홈페이지 아이콘: 클릭하면 개인 웹사이트 새 창 열림 -->
+                    <a id="profile-website-link" href="" target="_blank" class="text-white">
+                        <i class="bi bi-house-door-fill" style="font-size: 2rem;"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Section-->
+    <section class="py-5">
+        <div class="container">
+            <div class="row align-items-center">
+                <!-- 이미지 좌측 -->
+                <div class="col-md-4 text-center">
+                    <img id="profile-img" class="profile-img" src="" alt="프로필 사진">
+                </div>
+                <!-- 정보 우측 -->
+                <div class="col-md-8">
+                    <ul id="profile-info" class="list-unstyled"></ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // URL의 쿼리스트링에서 식별자 추출
+        const params = new URLSearchParams(window.location.search);
+        const memberId = params.get('id');
+
+        // 각 멤버별 프로필 데이터를 객체에 정의 (예시)
+        const profiles = {
+            "이희용": {
+                name: "이희용 [조장]",
+                description: "노는게 제일 좋아",
+                birthdate: "2000-11-27",
+                MBTI: "ISTJ",
+                favoriteFood: "초밥, 라멘, 돈까스",
+                techStack: ["Java", "Spring"],
+                projects: ["~ing"],
+                contact: {
+                    github: "https://github.com/eddie-backdev",
+                    instagram: "https://www.instagram.com/2._.hyong/"
+                },
+                image: "assets/이희용.jpeg",
+                website: "https://eddie-backdev.github.io/introduce/"
+            },
+            "김시헌": {
+                name: "김시헌",
+                description: "한잔 하실?",
+                birthdate: "1998-04-11",
+                MBTI: "INTJ",
+                favoriteFood: "삼겹살",
+                techStack: ["Java", "Spring", "Python"],
+                projects: ["한의학 EMR 전자차트, 한의학 웹매거진"],
+                contact: { github: "https://github.com/siheon0411" },
+                image: "assets/김시헌.jpeg",
+                website: "https://siheon0411.github.io/introducing-siheon/"
+            },
+            "김지산": {
+                name: "김지산",
+                description: "뜨거운 남자",
+                birthdate: "2000-05-26",
+                MBTI: "ISTP",
+                favoriteFood: "해산물 요리",
+                techStack: ["Python", "Django", "Java"],
+                projects: ["OpenAi API와 Django를 활용한 그림일기 웹서비스"],
+                contact: {
+                    github: "https://github.com/kjs254",
+                    instagram: "https://www.instagram.com/kj_mountain"
+                },
+                image: "assets/김지산.png",
+                website: "https://kjs254.github.io/front-mypage/"
+            },
+            "신혜원": {
+                name: "신혜원",
+                description: "말하는 감자",
+                birthdate: "2001-06-07",
+                MBTI: "ISFP/INFP",
+                favoriteFood: "연어초밥, 막창",
+                techStack: ["flutter", "node.js", "mysql", "python"],
+                projects: ["캐릭터 육성 수면 관리 어플리케이션", "감정 분석 어플리케이션"],
+                contact: { github: "https://github.com/hyew0nn" },
+                image: "assets/신혜원.jpeg",
+                website: "https://hyew0nn.github.io/mypage/index.html"
+            },
+            "이재윤": {
+                name: "이재윤",
+                description: "즐기는 개발자",
+                birthdate: "1999-04-17",
+                MBTI: "INTJ",
+                favoriteFood: "소고기, 한식",
+                techStack: ["SpringBoot", "JPA", "Docker", "MySQL", "AWS"],
+                projects: ["다중 PC 환경 모니터링"],
+                contact: { github: "https://github.com/iju42829" },
+                image: "assets/이재윤.png",
+                website: "https://iju42829.github.io/"
+            },
+            "임민서": {
+                name: "임민서",
+                description: "내일 죽어도 리버풀",
+                birthdate: "2000-12-17",
+                MBTI: "INTJ",
+                favoriteFood: "당가원 차돌 짬뽕",
+                techStack: ["ReactJS", "Spring Boot", "NestJS", "Node.js", "Terraform"],
+                projects: ["'시현하다' 포토부스 서비스 / 프리랜서 매칭 플랫폼"],
+                contact: { github: "https://github.com/happbob" },
+                image: "assets/임민서.webp",
+                website: "https://famous-boba-2a6144.netlify.app/"
+            }
+        };
+
+        // 식별자가 유효하면 프로필 데이터를 표시
+        if (memberId && profiles[memberId]) {
+            const profile = profiles[memberId];
+
+            // 헤더 업데이트: 이름과 설명을 채움
+            document.getElementById('profile-header-name').textContent = profile.name;
+            document.getElementById('profile-header-desc').textContent = profile.description;
+
+            // 홈페이지 아이콘 링크 업데이트
+            document.getElementById('profile-website-link').href = profile.website || "#";
+
+            // 프로필 이미지 업데이트
+            document.getElementById('profile-img').src = profile.image;
+
+            // 추가 정보 업데이트
+            const infoList = document.getElementById('profile-info');
+            infoList.innerHTML = `
+        <li><strong>생년월일:</strong> ${profile.birthdate}</li>
+        <li><strong>MBTI:</strong> ${profile.MBTI}</li>
+        <li><strong>좋아하는 음식:</strong> ${profile.favoriteFood}</li>
+        <li><strong>기술스택:</strong> ${profile.techStack.join(', ')}</li>
+        <li><strong>프로젝트:</strong> ${profile.projects.join(', ')}</li>
+        <li><strong>Contact:</strong>
+            ${profile.contact.github ? `<a href="${profile.contact.github}" target="_blank">GitHub</a>` : ''}
+            ${profile.contact.instagram ? ` | <a href="${profile.contact.instagram}" target="_blank">Instagram</a>` : ''}
+        </li>
+      `;
+        } else {
+            document.querySelector('section').innerHTML = "<p>프로필 데이터를 찾을 수 없습니다.</p>";
+        }
+    </script>
+
+    <!-- Footer-->
+    <footer class="py-5 bg-dark">
+        <div class="container">
+            <p class="m-0 text-center text-white">Copyright &copy; Your Website 2023</p>
+        </div>
+    </footer>
+    <!-- Bootstrap core JS-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Core theme JS-->
+    <script src="js/scripts.js"></script>
+</body>
+
+</html>
